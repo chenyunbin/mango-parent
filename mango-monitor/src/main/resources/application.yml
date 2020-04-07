@@ -1,0 +1,24 @@
+server:
+  port: 8090
+spring:
+  application:
+    name: mango-monitor
+  boot:
+    admin:
+      client:
+        url: "http://116.62.156.8:8090"
+  cloud:
+    consul:
+      host: 116.62.156.8
+      port: 8500
+      discovery:
+        serviceName: ${spring.application.name}
+# 开放健康检查接口
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS

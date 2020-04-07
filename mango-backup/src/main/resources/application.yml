@@ -1,0 +1,32 @@
+server:
+  port: 8083
+spring:
+  application:
+    name: mango-backup
+  boot:
+    admin:
+      client:
+        url: "http://116.62.156.8:8090"
+  cloud:
+    consul:
+      host: 116.62.156.8
+      port: 8500
+      discovery:
+        serviceName: ${spring.application.name}    # 注册到consul的服务名称
+# 开放健康检查接口
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+# backup datasource
+mango:
+  backup:
+    datasource:
+      host: yunbin-cyb.mysql.rds.aliyuncs.com
+      userName: root
+      password: root!@#$%^&*()_+-=123456
+      database: mango
